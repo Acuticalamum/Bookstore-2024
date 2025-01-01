@@ -14,10 +14,10 @@ using std::exception;
 using std::pair;
 
 int main() {
-  //freopen("../test1.in", "r", stdin);
-  //freopen("../test1.out", "w", stdout);
+  //freopen("../test.in", "r", stdin);
+  //freopen("../test.out", "w", stdout);
   userInit();//登录超级管理员root
-  logInit();//初始化账目日志
+  logInit();
   bookInit();
   string str; //每次输入的指令
   while(getline(cin, str)) {
