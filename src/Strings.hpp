@@ -29,6 +29,11 @@ vector<string> splitString(string &s) {
 }
 
 long long stringToInt(string &s) {
+  for(int i = 0; i < s.size(); i++) {
+    if(s[i] < '0' || s[i] > '9') {
+      throw exception();
+    }
+  }
   bool flag = false;
   long long ret = 0;
   if(s[0] == '-') {
