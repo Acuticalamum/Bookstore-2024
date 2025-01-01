@@ -50,6 +50,9 @@ void add(double money) {//修改账目
 }
 
 void showFinance(int cnt, bool flag) {//显示收入支出
+  if(CurPrivilege != 7) {//需要权限为7
+    throw exception();
+  }
   if(!flag) {//没输Count输出总额
     cout << fixed << setprecision(2) << "+ " << income[Count] << " - " << cost[Count] << '\n';
     return;
