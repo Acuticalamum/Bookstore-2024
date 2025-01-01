@@ -21,6 +21,7 @@ int main() {
   bookInit();
   string str; //每次输入的指令
   while(getline(cin, str)) {
+    if(str == "") continue;//处理空行
     //cout << str << endl;
     vector<string> tokens = splitString(str);
     string cmd = tokens[0];
@@ -42,8 +43,9 @@ int main() {
             throw exception();
           }
           char *_id = (char*)(tokens[1].c_str());
-          char *_password{};
-          su(_id, _password);
+          string blank = "";
+          char* blankcstr = (char*)(blank.c_str());
+          su(_id, blankcstr);
         }
         else {//参数个数不符
           throw exception();
@@ -94,7 +96,9 @@ int main() {
           }
           char* _id = (char*)(tokens[1].c_str());
           char* NewPassword = (char*)(tokens[2].c_str());
-          passwd(_id, "", NewPassword);
+          string blank = "";
+          char* blankcstr = (char*)(blank.c_str());
+          passwd(_id, blankcstr, NewPassword);
         }
         else {//参数个数不符
           throw exception();
@@ -249,6 +253,7 @@ int main() {
     else {//其余情况均不合法
       invalid(str);
     }
+    //cout << str << endl;
   }
   return 0;
 }
