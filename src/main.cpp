@@ -230,18 +230,6 @@ int main() {
         invalid(str);
       }
     }
-    else if(cmd == "Count") {//交易笔数 Log部分
-      try {
-        if(tokens.size() != 1) {//参数个数不符
-          throw exception();
-        }
-        else {
-          showCount();
-        }
-      } catch(exception &ex) {
-        invalid(str);
-      }
-    }
     else if(cmd == "show" && tokens.size() > 1 && tokens[1] == "finance") {//收入支出 Log部分
       try {
         if(tokens.size() == 2) {//没输Count
