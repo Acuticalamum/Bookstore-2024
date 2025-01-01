@@ -5,6 +5,7 @@
 #include<string>
 #include<iostream>
 #include<iomanip>
+#include"Storage.hpp"
 
 using std::string;
 using std::cin;
