@@ -42,12 +42,12 @@ class User {
 
 FileStorage <User> StorageofUser("User");
 vector<User> LoginStack;
-int CurPrivilege;
+int CurPrivilege = 0;
 
 void userInit() {
+  StorageofUser.init();
   User root("root", "root", "sjtu", 7);
   StorageofUser.insertToken(root);
-  CurPrivilege = 7;
 }//创建超级管理员
 
 void su(char* _id, char* _password) {

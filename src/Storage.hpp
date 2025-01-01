@@ -25,15 +25,18 @@ class FileStorage {
   MemoryRiver<node, 3> dict;
   MemoryRiver<T[maxsize], 3> list; 
 
-  void init() {
-    dict.initialise(fileStorageName + "dict");
+  bool init() {
+    bool flag = dict.initialise(fileStorageName + "dict");
     list.initialise(fileStorageName + "list");
-    node x(100, 1, -1, 110); //100表示第一个块代表的key的起始地址， -1表示end
-    dict.write_info(1, 1);
-    dict.write_info(110, 2); //110表示块起始地址
-    dict.update(x, 110);
-    T k[maxsize];
-    list.update(k, 100);
+    if(!flag) {//如果没有创建文件
+      node x(100, 1, -1, 110); //100表示第一个块代表的key的起始地址， -1表示end
+      dict.write_info(1, 1);
+      dict.write_info(110, 2); //110表示块起始地址
+      dict.update(x, 110);
+      T k[maxsize];
+      list.update(k, 100);
+    }
+    return flag;
   }
 
   FileStorage() = default;

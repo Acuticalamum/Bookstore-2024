@@ -23,11 +23,18 @@ public:
 
     void initialise(string FN = "") {
         if (FN != "") file_name = FN;
-        file.open(file_name, std::ios::out);
-        int tmp = 0;
-        for (int i = 0; i < info_len; ++i)
+        ifstream file_check(file_name);
+        if(!file_check.good()) {
+          file.open(file_name, std::ios::out);
+          int tmp = 0;
+          for (int i = 0; i < info_len; ++i)
             file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
-        file.close();
+          file.close();
+          return true;
+        } else {
+          file_check.close();
+          return false;
+        }
     }
 
     //读出第n个int的值赋给tmp，1_base

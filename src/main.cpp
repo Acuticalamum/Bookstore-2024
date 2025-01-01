@@ -14,7 +14,7 @@ using std::exception;
 using std::pair;
 
 int main() {
-  freopen("../test1.in", "r", stdin);
+  //freopen("../test1.in", "r", stdin);
   userInit();//登录超级管理员root
   logInit();//初始化账目日志
   bookInit();
