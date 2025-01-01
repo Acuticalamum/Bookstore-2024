@@ -45,8 +45,12 @@ vector<User> LoginStack;
 int CurPrivilege;
 
 void userInit() {
+  User tmp("root");
+  tmp = StorageofUser.findToken(tmp);
   User root("root", "root", "sjtu", 7);
-  StorageofUser.insertToken(root);
+  if(strcmp(root.id, tmp.id)) {//root没被创建过
+    StorageofUser.insertToken(root);
+  }
 }//创建超级管理员
 
 void su(char* _id, char* _password) {
